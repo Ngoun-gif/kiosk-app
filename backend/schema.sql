@@ -1,0 +1,33 @@
+CREATE TABLE IF NOT EXISTS products (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT NOT NULL,
+    price REAL NOT NULL,
+    is_active INTEGER NOT NULL DEFAULT 1
+);
+
+-- Seed only if empty (handled in db.py)
+
+CREATE TABLE IF NOT EXISTS products (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT NOT NULL,
+    price REAL NOT NULL,
+    is_active INTEGER NOT NULL DEFAULT 1
+);
+
+CREATE TABLE IF NOT EXISTS orders (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    order_type TEXT NOT NULL, -- DINE_IN / TAKE_AWAY
+    total REAL NOT NULL,
+    created_at TEXT DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS order_items (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    order_id INTEGER NOT NULL,
+    product_id INTEGER NOT NULL,
+    name TEXT NOT NULL,
+    price REAL NOT NULL,
+    qty INTEGER NOT NULL,
+    line_total REAL NOT NULL,
+    FOREIGN KEY (order_id) REFERENCES orders (id)
+);

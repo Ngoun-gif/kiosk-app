@@ -1,20 +1,20 @@
 from pathlib import Path
 import webview
-from src.kiosk.app_api import Api
+from app_api import AppApi
 
 BASE_DIR = Path(__file__).resolve().parent
-UI_PATH = (BASE_DIR / "ui" / "index.html").as_uri()
+UI_PATH = (BASE_DIR.parent / "ui" / "index.html").as_uri()
 
-if __name__ == "__main__":
-    api = Api()
-
+def run():
     webview.create_window(
         title="Kiosk",
-        url=UI_PATH,          # absolute file URI (more reliable)
-        js_api=api,
+        url=UI_PATH,
+        js_api=AppApi(),
         fullscreen=True,
         resizable=False,
         frameless=True
     )
+    webview.start(debug=False)
 
-    webview.start(debug=False)  # keep debug off for kiosk
+if __name__ == "__main__":
+    run()

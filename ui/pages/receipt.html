@@ -1,0 +1,31 @@
+<div class="container py-4">
+    <div class="d-flex align-items-center justify-content-between mb-3">
+        <h2 class="fw-bold m-0">Receipt</h2>
+        <button class="btn btn-outline-light" onclick="go('menu')">Back to Menu</button>
+    </div>
+
+    <div class="card">
+        <div class="card-body">
+            <div id="receiptBox"></div>
+
+            <div class="d-grid gap-2 mt-3">
+                <button class="btn btn-primary btn-lg" onclick="finishOrder()">
+                    Finish (Reset)
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="d-grid gap-2 mt-3">
+    <button class="btn btn-success btn-lg" onclick="savePdf()">
+        Save Receipt as PDF (Silent)
+    </button>
+    <button class="btn btn-outline-light" onclick="openLastPdf()">
+        Open PDF
+    </button>
+    <button class="btn btn-primary btn-lg" onclick="finishOrder()">
+        Finish (Reset)
+    </button>
+</div>
+
+<div id="pdfMsg" class="text-info mt-2"></div>
